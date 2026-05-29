@@ -5,9 +5,12 @@ After=network.target
 [Service]
 User=cowrie
 Group=cowrie
-WorkingDirectory=/home/cowrie/cowrie
-ExecStart=/home/cowrie/cowrie/cowrie-env/bin/python /home/cowrie/cowrie/src/twistd.py --umask=0022 --pidfile=var/run/cowrie.pid -n cowrie
-Restart=always
+WorkingDirectory=/home/cowrie/my-honeypot
+ExecStart=/home/cowrie/my-honeypot/cowrie-env/bin/cowrie start
+ExecStop=/home/cowrie/my-honeypot/cowrie-env/bin/cowrie stop
+Type=forking
+PIDFile=/home/cowrie/my-honeypot/var/run/cowrie.pid
+Restart=on-failure
 RestartSec=5
 
 [Install]
