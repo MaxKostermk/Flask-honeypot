@@ -7,15 +7,13 @@
 <body>
   <div class="card">
     <h1>CIMSOLUTIONS Admin Portal</h1>
-
     {% if error %}
       <div class="error">{{ error }}</div>
     {% endif %}
-
     <form method="post">
       <input name="username" placeholder="Username" autocomplete="off">
       <input name="password" type="password" placeholder="Password">
-      <button type="submit" href="/dashboard.html">Sign in</button>
+      <button type="submit">Sign in</button>
     </form>
   </div>
 </body>

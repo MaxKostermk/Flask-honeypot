@@ -26,12 +26,12 @@ if [ ! -f etc/cowrie.cfg ]; then
   cowrie init
 fi
 '
+sudo -u cowrie bash -c 'cat >> /home/cowrie/cowrie/etc/cowrie.cfg << EOF
+[output_jsonlog]
+enabled = true
+logfile = /home/cowrie/cowrie/var/log/cowrie/cowrie.json
+EOF'
 
-# [output_jsonlog]
-# enabled = true
-# logfile = /home/cowrie/cowrie/var/log/cowrie/cowrie.json
-# EOF'
-#sudo -u cowrie /home/cowrie/cowrie/cowrie-env/bin/cowrie start
 sudo cp systemd/fakepanel.service /etc/systemd/system/fakepanel.service
 sudo cp systemd/cowrie.service /etc/systemd/system/cowrie.service
 sudo systemctl daemon-reload

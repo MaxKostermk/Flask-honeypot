@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 LOG_FILE = "/var/log/honeypot/fakepanel.jsonl"
 
-
 def write_log(event):
     os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
     event["timestamp"] = datetime.now(timezone.utc).isoformat()
@@ -25,7 +24,6 @@ def index():
     write_log({"event": "page_view"})
     return redirect("/login")
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -41,7 +39,3 @@ def login():
     write_log({"event": "login_page"})
     return render_template("login.html", error=None)
 
-
-@app.route("/health", methods=["GET"])
-def health():
-    return {"status": "ok"}
