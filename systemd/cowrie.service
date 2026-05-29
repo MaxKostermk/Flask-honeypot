@@ -1,0 +1,14 @@
+[Unit]
+Description=Cowrie SSH Honeypot
+After=network.target
+
+[Service]
+User=cowrie
+Group=cowrie
+WorkingDirectory=/home/cowrie/cowrie
+ExecStart=/home/cowrie/cowrie/cowrie-env/bin/python /home/cowrie/cowrie/src/twistd.py --umask=0022 --pidfile=var/run/cowrie.pid -n cowrie
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
